@@ -28,8 +28,8 @@ function findNumber(myString) {
     myString = myString.toString();
   }
   for (let i = 0; i <= myString.length - 1; i++) {
-    if(myString[i] === '0' || parseInt(myString[i], 10)) {
-      stringNumber += parseInt(myString[i], 10);
+    if (!Number.isNaN(parseInt(myString[i], 10))) {
+      stringNumber += myString[i];
     }
   }
   return stringNumber;
