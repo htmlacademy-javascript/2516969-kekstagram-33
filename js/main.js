@@ -5,6 +5,65 @@ const COMMENTS_QUANTITY = {
   max: 30
 };
 
+const PHOTO_DESCRIPTIONS = [
+  'Как круто!',
+  'Обожаю это фото',
+  'Очень красиво смотрится',
+  'Настоящее вдохновение',
+  'Сразу чувствуется твоя энергия',
+  'Просто невероятно',
+  'Очень атмосферное фото',
+  'Ты как всегда на высоте',
+  'Настроение передается на все сто',
+  'Какая классная атмосфера',
+  'Так держать',
+  'Завораживает',
+  'Вот это уровень',
+  'Очень круто получилось',
+  'Видно, что от души',
+  'Очень стильно',
+  'Тебе это идет',
+  'Гармония и красота',
+  'Настоящий эстет',
+  'Фантастическое фото',
+  'Такой легкий кадр',
+  'Прямо в самое сердце',
+  'Словно кадр из фильма',
+  'Как будто из мечты',
+  'Очень вдохновляющий кадр',
+];
+
+const LIKES_QUANTITY = {
+  min: 15,
+  max: 200,
+};
+
+const AVATAR_QUANTITY = {
+  min: 1,
+  max: 6,
+};
+
+const COMMENT_MESSAGES = [
+  'В целом всё неплохо. Но не всё.',
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
+  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
+];
+
+const USER_NAMES = [
+  'Иван',
+  'Анна',
+  'Мария',
+  'Алексей',
+  'Екатерина',
+  'Сергей',
+  'Ольга',
+  'Михаил',
+  'Виктория',
+  'Дмитрий',
+];
+
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
@@ -31,42 +90,11 @@ function createRandomIdFromRangeGenerator(min, max) {
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 function getDescription() {
-  const descriptions = [
-    'Как круто!',
-    'Обожаю это фото',
-    'Очень красиво смотрится',
-    'Настоящее вдохновение',
-    'Сразу чувствуется твоя энергия',
-    'Просто невероятно',
-    'Очень атмосферное фото',
-    'Ты как всегда на высоте',
-    'Настроение передается на все сто',
-    'Какая классная атмосфера',
-    'Так держать',
-    'Завораживает',
-    'Вот это уровень',
-    'Очень круто получилось',
-    'Видно, что от души',
-    'Очень стильно',
-    'Тебе это идет',
-    'Гармония и красота',
-    'Настоящий эстет',
-    'Фантастическое фото',
-    'Такой легкий кадр',
-    'Прямо в самое сердце',
-    'Словно кадр из фильма',
-    'Как будто из мечты',
-    'Очень вдохновляющий кадр',
-  ];
-
-  return getRandomArrayElement(descriptions);
+  return getRandomArrayElement(PHOTO_DESCRIPTIONS);
 }
 
 function getLikes() {
-  const min = 15;
-  const max = 200;
-
-  return getRandomInteger(min, max);
+  return getRandomInteger(LIKES_QUANTITY.min, LIKES_QUANTITY.max);
 }
 
 function getPhotoUrl(id) {
@@ -84,40 +112,17 @@ function generatePhoto(id) {
 }
 
 function generateAvatarUrl() {
-  const min = 1;
-  const max = 6;
-  const avatarId = getRandomInteger(min, max);
+  const avatarId = getRandomInteger(AVATAR_QUANTITY.min, AVATAR_QUANTITY.max);
 
   return `img/avatar-${avatarId}.svg`;
 }
 
 function getCommentMessage() {
-  const messages = [
-    'В целом всё неплохо. Но не всё.',
-    'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-    'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-    'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-    'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-  ];
-
-  return getRandomArrayElement(messages);
+  return getRandomArrayElement(COMMENT_MESSAGES);
 }
 
 function getName() {
-  const names = [
-    'Иван',
-    'Анна',
-    'Мария',
-    'Алексей',
-    'Екатерина',
-    'Сергей',
-    'Ольга',
-    'Михаил',
-    'Виктория',
-    'Дмитрий',
-  ];
-
-  return getRandomArrayElement(names);
+  return getRandomArrayElement(USER_NAMES);
 }
 
 const getCommentId = createRandomIdFromRangeGenerator(0, POST_QUANTITY * COMMENTS_QUANTITY.max);
