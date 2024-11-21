@@ -4,8 +4,9 @@ const renderPosts = (dataForPosts) => {
 
   const newFragment = document.createDocumentFragment();
 
-  dataForPosts.forEach(({ url, description, likes, comments }) => {
+  dataForPosts.forEach(({ id, url, description, likes, comments }) => {
     const newPhoto = template.cloneNode(true);
+    newPhoto.id = id;
     newPhoto.querySelector('.picture__img').src = url;
     newPhoto.querySelector('.picture__img').alt = description;
     newPhoto.querySelector('.picture__comments').textContent = comments.length;
