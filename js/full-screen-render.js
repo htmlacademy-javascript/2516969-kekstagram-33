@@ -1,4 +1,4 @@
-const ESCAPE = 'Escape';
+const KeyCode = { ESCAPE: 'Escape', ENTER: 'Enter' };
 const bigPictureContainer = document.querySelector('.big-picture');
 const bigPicture = bigPictureContainer.querySelector('img');
 const pictureCloseButton = bigPictureContainer.querySelector('.big-picture__cancel');
@@ -33,7 +33,7 @@ function renderComents(dataForComments) {
 }
 
 function onDocumentKeydown(evt) {
-  if (evt.key === ESCAPE) {
+  if (evt.key === KeyCode.ESCAPE) {
     evt.preventDefault();
     closeBigImage();
   }
