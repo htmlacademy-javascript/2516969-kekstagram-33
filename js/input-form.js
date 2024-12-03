@@ -12,7 +12,7 @@ function showForm() {
 function hideForm() {
   form.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  onFormClose.rem('click', hideForm);
+  onFormClose.removeEventListener('click', hideForm);
   document.removeEventListener('keydown', onDocumentKeydown);
 }
 
@@ -23,8 +23,8 @@ function onDocumentKeydown(evt) {
   }
 }
 
-function openAndClose() {
+function openAndCloseForm() {
   onFormOpen.addEventListener('click', showForm);
 }
 
-export { openAndClose };
+export { openAndCloseForm };
