@@ -22,9 +22,4 @@ function onDocumentKeydown(evt) {
     hideForm();
   }
 }
-
-function openAndCloseForm() {
-  onFormOpen.addEventListener('click', showForm);
-}
-
-export { openAndCloseForm };
+onFormOpen.addEventListener('change', showForm);

@@ -15,7 +15,7 @@ const ValidationErrors = {
   },
 };
 
-const normalizeComments = (inputHashtags) => inputHashtags.trim().split(/\s+/).filter(Boolean);
+const normalizeHashtags = (inputHashtags) => inputHashtags.trim().split(/\s+/).filter(Boolean);
 
 const checkHachtagCount = (hashtags) => hashtags.length <= HASHTAG_COUNT;
 
@@ -36,19 +36,25 @@ const pristine = new Pristine(form, {
 
 pristine.addValidator(
   hashtagFieldElement,
-  (value) => normalizeComments(value).every(checkHachtagsFormat),
+  (value) => normalizeHashtags(value).every(checkHachtagsFormat),
   ValidationErrors.HASHTAGS.FORMAT
 );
 
 pristine.addValidator(
   hashtagFieldElement,
-  (value) => checkHachtagCount(normalizeComments(value)),
+  (value) => normalizeHashtags(value).every(checkHachtagsFormat),
+  ValidationErrors.HASHTAGS.FORMAT
+);
+
+pristine.addValidator(
+  hashtagFieldElement,
+  (value) => checkHachtagCount(normalizeHashtags(value)),
   ValidationErrors.HASHTAGS.MAX_COUNT
 );
 
 pristine.addValidator(
   hashtagFieldElement,
-  (value) => checkDuplicates(normalizeComments(value)),
+  (value) => checkDuplicates(normalizeHashtags(value)),
   ValidationErrors.HASHTAGS.NO_REPEAT
 );
 
@@ -66,3 +72,9 @@ form.addEventListener('submit', (evt) => {
     form.submit();
   }
 });
+
+export const validateHashtag = (input) => normalizeHashtags(input).every(checkHachtagsFormat) &&
+  normalizeHashtags(input).every(checkHachtagsFormat) &&
+  checkHachtagCount(normalizeHashtags(input));
+
+export const validateComment = (input) => checkCommentLength(input);
