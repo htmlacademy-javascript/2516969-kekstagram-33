@@ -88,4 +88,4 @@ function openFullScreenImage(postData) {
   onCommentsLoad.addEventListener('click', renderMoreComments);
 }
 
-export { openFullScreenImage };
+export { openFullScreenImage, KeyCode };
