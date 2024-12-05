@@ -19,12 +19,29 @@ const defaultScale = () => {
   previewImage.style.transform = `scale(${SCALE_PARAM.DEFAULT / 100})`;
 };
 
+
+function checkDisabledStatus() {
+  if(newScale === SCALE_PARAM.MAX) {
+    onScaleBigger.disabled = true;
+  } else {
+    onScaleBigger.disabled = false;
+  }
+
+  if(newScale === SCALE_PARAM.MIN) {
+    onScaleSmaller.disabled = true;
+  } else {
+    onScaleSmaller.disabled = false;
+  }
+}
+
+
 function makeBigger() {
   if (newScale < SCALE_PARAM.MAX) {
     newScale += SCALE_PARAM.STEP;
     scaleValue.value = numberToPercent(newScale);
     updateImageSize(newScale);
   }
+  checkDisabledStatus();
 }
 
 function makeSmaller() {
@@ -33,6 +50,7 @@ function makeSmaller() {
     scaleValue.value = numberToPercent(newScale);
     updateImageSize(newScale);
   }
+  checkDisabledStatus();
 }
 
 function updateImageSize(scale) {
