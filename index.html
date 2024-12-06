@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="./vendor/nouislider/nouislider.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -51,7 +52,7 @@
                     <button type="button" class="scale__control  scale__control--smaller">Уменьшить</button>
                     <input type="text" class="scale__control  scale__control--value" value="100%" title="Image Scale"
                       name="scale" readonly>
-                    <button type="button" class="scale__control  scale__control--bigger">Увеличить</button>
+                    <button type="button" class="scale__control  scale__control--bigger" disabled>Увеличить </button>
                   </fieldset>
 
                   <!-- Предварительный просмотр изображения -->
@@ -250,7 +251,7 @@
       <h2 class="data-error__title">Не удалось загрузить данные</h2>
     </section>
   </template>
-  <!-- <script src="./vendor/pristine/pristine.min.js" defer></script> -->
+  <script src="./vendor/nouislider/nouislider.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/pristinejs@1.1.0/dist/pristine.min.js" defer></script>
   <script src="./js/functions.js" defer></script>
   <script src="./js/main.js" type="module"></script>

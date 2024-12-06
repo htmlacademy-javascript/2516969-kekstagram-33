@@ -42,12 +42,6 @@ pristine.addValidator(
 
 pristine.addValidator(
   hashtagFieldElement,
-  (value) => normalizeHashtags(value).every(checkHachtagsFormat),
-  ValidationErrors.HASHTAGS.FORMAT
-);
-
-pristine.addValidator(
-  hashtagFieldElement,
   (value) => checkHachtagCount(normalizeHashtags(value)),
   ValidationErrors.HASHTAGS.MAX_COUNT
 );
