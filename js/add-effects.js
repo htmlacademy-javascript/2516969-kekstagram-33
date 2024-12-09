@@ -54,18 +54,20 @@ const filtersMap = {
   phobos: PHOBOS,
   heat: HEAT,
 };
-
-const effectSlider = document.querySelector('.img-upload__effect-level');
+const effectSliderContainer = document.querySelector('.img-upload__effect-level');
+const effectSlider = document.querySelector('.effect-level__slider');
 const effects = document.querySelectorAll('.effects__radio');
 const image = document.querySelector('.img-upload__preview img');
 const effectLevel = document.querySelector('.effect-level__value');
 
 let newFilter;
 effectSlider.classList.add('hidden');
+effectSliderContainer.classList.add('hidden');
 function setImageEffect() {
   if (newFilter.NAME !== NONE.NAME) {
     image.style.filter = `${newFilter.NAME}(${newFilter.MAX}${newFilter.UNITS})`;
     effectSlider.classList.remove('hidden');
+    effectSliderContainer.classList.remove('hidden');
 
     effectSlider.noUiSlider.updateOptions({
       range: {
@@ -79,6 +81,7 @@ function setImageEffect() {
   } else {
     image.style.filter = '';
     effectSlider.classList.add('hidden');
+    effectSliderContainer.classList.add('hidden');
   }
 }
 
