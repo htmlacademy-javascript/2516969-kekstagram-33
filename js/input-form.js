@@ -4,6 +4,7 @@ import { reset as resetEffects } from './add-effects';
 import { validate, hashtagFieldElement, commentFieldElement } from './validate-input-form';
 import { showSuccesMessage, showErrorMessage } from './messages';
 
+const SEND_DATA = 'https://32.javascript.htmlacademy.pro/kekstagram/';
 const imageUploadInput = document.querySelector('.img-upload__input');
 const overlay = document.querySelector('.img-upload__overlay');
 const uploadCancelButton = document.querySelector('.img-upload__cancel');
@@ -47,7 +48,7 @@ export const setUserFormSubmit = (onSuccess) => {
       uploadSubmitButton.disabled = true;
       const postData = new FormData(evt.target);
       fetch(
-        'https://32.javascript.htmlacademy.pro/kekstagram',
+        SEND_DATA,
         {
           method: 'POST',
           body: postData,

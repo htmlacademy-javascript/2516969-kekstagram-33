@@ -38,7 +38,7 @@ export function showSuccesMessage() {
 
   const successMessage = document.querySelector('.success');
   const closeButton = document.querySelector('.success__button');
-
+  closeButton.focus();
   closeButton.addEventListener('click', () => {
     successMessage.remove();
   });
@@ -49,7 +49,7 @@ export function showSuccesMessage() {
     }
   });
 
-  successContainer.addEventListener('keydown', (evt) => {
+  successMessage.addEventListener('keydown', (evt) => {
     if (evt.key === KeyCode.ESCAPE) {
       successMessage.remove();
     }
