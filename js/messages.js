@@ -1,11 +1,12 @@
 import { KeyCode } from './full-screen-render';
+const SET_TIMEOUT = 5000;
 
 export function showDataErrorMessage() {
   const errContainer = document.querySelector('#data-error').content.cloneNode(true);
   document.body.appendChild(errContainer);
   setTimeout(() => {
     document.querySelector('.data-error').remove();
-  }, 5000);
+  }, SET_TIMEOUT);
 }
 
 export function showErrorMessage() {
