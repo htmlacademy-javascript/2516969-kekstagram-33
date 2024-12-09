@@ -1,8 +1,8 @@
 const NONE = {
   NAME: 'none',
-  MIN: '0',
-  MAX: '100',
-  STEP: '1',
+  MIN: 0,
+  MAX: 100,
+  STEP: 1,
   UNITS: ''
 };
 
@@ -61,7 +61,7 @@ const image = document.querySelector('.img-upload__preview img');
 const effectLevel = document.querySelector('.effect-level__value');
 
 let newFilter;
-
+effectSlider.classList.add('hidden');
 function setImageEffect() {
   if (newFilter.NAME !== NONE.NAME) {
     image.style.filter = `${newFilter.NAME}(${newFilter.MAX}${newFilter.UNITS})`;
@@ -99,11 +99,11 @@ export function reset() {
 
 noUiSlider.create(effectSlider, {
   range: {
-    min: 0,
-    max: 100
+    min: NONE.MIN,
+    max: NONE.MAX
   },
-  start: 100,
-  step: 1,
+  start: NONE.MAX,
+  step: NONE.STEP,
   connect: 'lower',
   format: {
     to: (value) => Number(value),

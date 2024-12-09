@@ -5,6 +5,8 @@ const SCALE_PARAM = {
   MAX: 100
 };
 
+const MAX_SCALE = 100;
+
 const onScaleSmaller = document.querySelector('.scale__control--smaller');
 const onScaleBigger = document.querySelector('.scale__control--bigger');
 const scaleValue = document.querySelector('.scale__control--value');
@@ -16,7 +18,7 @@ const numberToPercent = (number) => `${number}%`;
 
 const defaultScale = () => {
   newScale = SCALE_PARAM.DEFAULT;
-  previewImage.style.transform = `scale(${SCALE_PARAM.DEFAULT / 100})`;
+  previewImage.style.transform = `scale(${SCALE_PARAM.DEFAULT / MAX_SCALE})`;
 };
 
 
@@ -59,6 +61,7 @@ function updateImageSize(scale) {
 
 export function changeImageScale() {
   defaultScale();
+  onScaleBigger.disabled = true;
 
   onScaleBigger.addEventListener('click', () => {
     makeBigger();
