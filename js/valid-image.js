@@ -10,8 +10,8 @@ imageInput.addEventListener('change', () => {
   const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
   if(matches) {
     previewImage.src = URL.createObjectURL(file);
-    for (const effect of effectsPreview) {
+    effectsPreview.forEach((effect) => {
       effect.style. backgroundImage = `url(${URL.createObjectURL(file)}`;
-    }
+    });
   }
 });

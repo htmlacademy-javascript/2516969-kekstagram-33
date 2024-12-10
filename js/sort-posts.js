@@ -1,6 +1,10 @@
 import { debounce } from './utils.js';
 import { renderPosts } from './render-photo.js';
 
+const FILTERS = {
+  RANDOM: 'filter-random',
+  DISCUSSED: 'filter-discussed'
+};
 const RANDOM_PHOTOS_COUNT = 10;
 const DEBOUNCE_TIMEOUT = 500;
 const sortContainer = document.querySelector('.img-filters');
@@ -16,10 +20,10 @@ const sortPictures = (previews) => {
   const sortPhotosWithDebounce = debounce((filterType) => {
     let sortingPhotos = previews;
     switch (filterType) {
-      case 'filter-random':
+      case FILTERS.RANDOM:
         sortingPhotos = previews.slice(0, RANDOM_PHOTOS_COUNT);
         break;
-      case 'filter-discussed':
+      case FILTERS.DISCUSSED:
         sortingPhotos = previews.slice().sort(sortByComments);
         break;
       default:
