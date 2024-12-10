@@ -12,6 +12,7 @@ const form = document.querySelector('.img-upload__form');
 const uploadSubmitButton = document.querySelector('.img-upload__submit');
 
 function showForm() {
+  imageUploadInput.focus();
   overlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
   form.addEventListener('keydown', onDocumentKeydown);
