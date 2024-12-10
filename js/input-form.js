@@ -1,7 +1,7 @@
 import { KeyCode } from './full-screen-render';
 import { changeImageScale } from './scale-image';
 import { reset as resetEffects } from './add-effects';
-import { validate, hashtagFieldElement, commentFieldElement } from './validate-input-form';
+import { validate, reset, hashtagFieldElement, commentFieldElement } from './validate-input-form';
 import { showSuccesMessage, showErrorMessage } from './messages';
 
 const SEND_DATA = 'https://32.javascript.htmlacademy.pro/kekstagram/';
@@ -12,6 +12,7 @@ const form = document.querySelector('.img-upload__form');
 const uploadSubmitButton = document.querySelector('.img-upload__submit');
 
 function showForm() {
+  imageUploadInput.focus();
   overlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
   form.addEventListener('keydown', onDocumentKeydown);
@@ -26,6 +27,7 @@ export function hideForm() {
   form.removeEventListener('keydown', onDocumentKeydown);
   resetEffects();
   form.reset();
+  reset();
 }
 
 function onDocumentKeydown(evt) {
@@ -68,7 +70,6 @@ export const setUserFormSubmit = (onSuccess) => {
         .finally(() => {
           uploadSubmitButton.disabled = false;
         });
-
     }
   });
 };

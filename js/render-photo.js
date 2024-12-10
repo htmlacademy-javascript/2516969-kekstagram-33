@@ -3,8 +3,12 @@ import { openFullScreenImage } from './full-screen-render.js';
 const renderPosts = (dataForPosts) => {
   const pictureContainer = document.querySelector('.pictures');
   const template = document.querySelector('#picture').content.querySelector('.picture');
-
   const newFragment = document.createDocumentFragment();
+  const pictures = pictureContainer.querySelectorAll('.picture');
+
+  pictures.forEach((element) => {
+    element.remove();
+  });
 
   dataForPosts.forEach((postData) => {
     const { id, url, description, likes, comments } = postData;

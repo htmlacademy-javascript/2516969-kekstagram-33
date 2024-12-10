@@ -15,7 +15,7 @@ const ValidationErrors = {
   },
 };
 
-const normalizeHashtags = (inputHashtags) => inputHashtags.trim().split(/\s+/).filter(Boolean);
+const normalizeHashtags = (inputHashtags) => inputHashtags.trim().split(/\s+/).map((hashtag) => hashtag.toLowerCase()).filter(Boolean);
 
 const checkHachtagCount = (hashtags) => hashtags.length <= HASHTAG_COUNT;
 
@@ -32,7 +32,7 @@ const pristine = new Pristine(form, {
   errorTextParent: 'img-upload__field-wrapper',
   errorTextTag: 'div',
   errorTextClass: 'img-upload__error',
-}, false);
+}, true);
 
 pristine.addValidator(
   hashtagFieldElement,
@@ -57,5 +57,7 @@ pristine.addValidator(
   (value) => checkCommentLength(value),
   ValidationErrors.COMMENT.MAX_LENGTH
 );
+const validate = pristine.validate;
+const reset = pristine.reset;
+export {validate, reset};
 
-export const validate = pristine.validate;
