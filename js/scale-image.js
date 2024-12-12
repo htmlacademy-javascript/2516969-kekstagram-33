@@ -63,11 +63,11 @@ export function changeImageScale() {
   defaultScale();
   onScaleBigger.disabled = true;
 
-  onScaleBigger.addEventListener('click', () => {
-    makeBigger();
-  });
+  onScaleBigger.addEventListener('click', makeBigger);
+  onScaleSmaller.addEventListener('click', makeSmaller);
+}
 
-  onScaleSmaller.addEventListener('click', () => {
-    makeSmaller();
-  });
+export function removeImageScale() {
+  onScaleBigger.removeEventListener('click', makeBigger);
+  onScaleSmaller.removeEventListener('click', makeSmaller);
 }
