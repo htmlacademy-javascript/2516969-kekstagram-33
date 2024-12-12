@@ -1,3 +1,4 @@
+import { uploadCancelButton } from './input-form';
 const SCALE_PARAM = {
   DEFAULT: 100,
   STEP: 25,
@@ -44,6 +45,7 @@ function makeBigger() {
     updateImageSize(newScale);
   }
   checkDisabledStatus();
+  uploadCancelButton.focus();
 }
 
 function makeSmaller() {
@@ -53,6 +55,7 @@ function makeSmaller() {
     updateImageSize(newScale);
   }
   checkDisabledStatus();
+  uploadCancelButton.focus();
 }
 
 function updateImageSize(scale) {
@@ -68,6 +71,8 @@ export function changeImageScale() {
 }
 
 export function removeImageScale() {
+  onScaleBigger.disabled = false;
+  onScaleSmaller.disabled = false;
   onScaleBigger.removeEventListener('click', makeBigger);
   onScaleSmaller.removeEventListener('click', makeSmaller);
 }

@@ -1,13 +1,13 @@
 import { KeyCode } from './full-screen-render';
-import { changeImageScale } from './scale-image';
+import { changeImageScale, removeImageScale } from './scale-image';
 import { reset as resetEffects } from './add-effects';
 import { validate, reset, hashtagFieldElement, commentFieldElement } from './validate-input-form';
 import { showSuccesMessage, showErrorMessage } from './messages';
 
-const SEND_DATA = 'https://32.javascript.htmlacademy.pro/kekstagram/';
-const imageUploadInput = document.querySelector('.img-upload__input');
+const SEND_DATA = 'https://32.javascript.htmlacademy.pro/kekstagra/';
+export const imageUploadInput = document.querySelector('.img-upload__input');
 const overlay = document.querySelector('.img-upload__overlay');
-const uploadCancelButton = document.querySelector('.img-upload__cancel');
+export const uploadCancelButton = document.querySelector('.img-upload__cancel');
 const form = document.querySelector('.img-upload__form');
 const uploadSubmitButton = document.querySelector('.img-upload__submit');
 
@@ -28,6 +28,7 @@ export function hideForm() {
   resetEffects();
   form.reset();
   reset();
+  removeImageScale();
 }
 
 function onDocumentKeydown(evt) {

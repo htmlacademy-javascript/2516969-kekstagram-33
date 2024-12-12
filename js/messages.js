@@ -1,4 +1,5 @@
 import { KeyCode } from './full-screen-render';
+import { imageUploadInput } from './input-form';
 const SET_TIMEOUT = 5000;
 
 export function showDataErrorMessage() {
@@ -18,17 +19,20 @@ export function showErrorMessage() {
   closeButton.focus();
   closeButton.addEventListener('click', () => {
     errorMessage.remove();
+    imageUploadInput.focus();
   });
 
   errorMessage.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
       errorMessage.remove();
+      imageUploadInput.focus();
     }
   });
 
   errorMessage.addEventListener('keydown', (evt) => {
     if (evt.key === KeyCode.ESCAPE) {
       errorMessage.remove();
+      imageUploadInput.focus();
     }
   });
 }
