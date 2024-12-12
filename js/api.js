@@ -1,5 +1,5 @@
 import { renderPosts } from './render-photo.js';
-import { hideForm, setUserFormSubmit } from './input-form.js';
+import { onCancelButtonClick, setUserFormSubmit } from './input-form.js';
 import { showDataErrorMessage } from './messages.js';
 import { showSortButtons, sortPictures } from './sort-posts.js';
 
@@ -15,4 +15,4 @@ fetch(GET_DATA)
     showDataErrorMessage();
   });
 
-setUserFormSubmit(hideForm);
+setUserFormSubmit(onCancelButtonClick);
