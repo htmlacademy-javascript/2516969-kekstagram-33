@@ -4,26 +4,26 @@ import { reset as resetEffects } from './add-effects';
 import { validate, reset, hashtagFieldElement, commentFieldElement } from './validate-input-form';
 import { showSuccesMessage, showErrorMessage } from './messages';
 
-const SEND_DATA = 'https://32.javascript.htmlacademy.pro/kekstagra/';
+const SEND_DATA = 'https://32.javascript.htmlacademy.pro/kekstagram/';
 export const imageUploadInput = document.querySelector('.img-upload__input');
 const overlay = document.querySelector('.img-upload__overlay');
 export const uploadCancelButton = document.querySelector('.img-upload__cancel');
 const form = document.querySelector('.img-upload__form');
 const uploadSubmitButton = document.querySelector('.img-upload__submit');
 
-function showForm() {
+function onInputChange() {
   imageUploadInput.focus();
   overlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
   form.addEventListener('keydown', onDocumentKeydown);
-  uploadCancelButton.addEventListener('click', hideForm);
+  uploadCancelButton.addEventListener('click', onCancelButtonClick);
   changeImageScale();
 }
 
-export function hideForm() {
+export function onCancelButtonClick() {
   overlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  uploadCancelButton.removeEventListener('click', hideForm);
+  uploadCancelButton.removeEventListener('click', onCancelButtonClick);
   form.removeEventListener('keydown', onDocumentKeydown);
   resetEffects();
   form.reset();
@@ -35,12 +35,12 @@ function onDocumentKeydown(evt) {
   if(evt.target !== commentFieldElement && evt.target !== hashtagFieldElement) {
     if (evt.key === KeyCode.ESCAPE) {
       evt.preventDefault();
-      hideForm();
+      onCancelButtonClick();
     }
   }
 }
 
-imageUploadInput.addEventListener('change', showForm);
+imageUploadInput.addEventListener('change', onInputChange);
 
 export const setUserFormSubmit = (onSuccess) => {
   form.addEventListener('submit', (evt) => {

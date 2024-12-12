@@ -8,8 +8,8 @@ const SCALE_PARAM = {
 
 const MAX_SCALE = 100;
 
-const onScaleSmaller = document.querySelector('.scale__control--smaller');
-const onScaleBigger = document.querySelector('.scale__control--bigger');
+const scaleControlSmaller = document.querySelector('.scale__control--smaller');
+const scaleControlBigger = document.querySelector('.scale__control--bigger');
 const scaleValue = document.querySelector('.scale__control--value');
 const previewImage = document.querySelector('.img-upload__preview img');
 
@@ -25,20 +25,20 @@ const defaultScale = () => {
 
 function checkDisabledStatus() {
   if(newScale === SCALE_PARAM.MAX) {
-    onScaleBigger.disabled = true;
+    scaleControlBigger.disabled = true;
   } else {
-    onScaleBigger.disabled = false;
+    scaleControlBigger.disabled = false;
   }
 
   if(newScale === SCALE_PARAM.MIN) {
-    onScaleSmaller.disabled = true;
+    scaleControlSmaller.disabled = true;
   } else {
-    onScaleSmaller.disabled = false;
+    scaleControlSmaller.disabled = false;
   }
 }
 
 
-function makeBigger() {
+function onScaleBiggerClick() {
   if (newScale < SCALE_PARAM.MAX) {
     newScale += SCALE_PARAM.STEP;
     scaleValue.value = numberToPercent(newScale);
@@ -48,7 +48,7 @@ function makeBigger() {
   uploadCancelButton.focus();
 }
 
-function makeSmaller() {
+function onScaleSmallerClick() {
   if (newScale > SCALE_PARAM.MIN) {
     newScale -= SCALE_PARAM.STEP;
     scaleValue.value = numberToPercent(newScale);
@@ -64,15 +64,15 @@ function updateImageSize(scale) {
 
 export function changeImageScale() {
   defaultScale();
-  onScaleBigger.disabled = true;
+  scaleControlBigger.disabled = true;
 
-  onScaleBigger.addEventListener('click', makeBigger);
-  onScaleSmaller.addEventListener('click', makeSmaller);
+  scaleControlBigger.addEventListener('click', onScaleBiggerClick);
+  scaleControlSmaller.addEventListener('click', onScaleSmallerClick);
 }
 
 export function removeImageScale() {
-  onScaleBigger.disabled = false;
-  onScaleSmaller.disabled = false;
-  onScaleBigger.removeEventListener('click', makeBigger);
-  onScaleSmaller.removeEventListener('click', makeSmaller);
+  scaleControlBigger.disabled = false;
+  scaleControlSmaller.disabled = false;
+  scaleControlBigger.removeEventListener('click', onScaleBiggerClick);
+  scaleControlSmaller.removeEventListener('click', onScaleSmallerClick);
 }
