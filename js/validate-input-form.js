@@ -1,9 +1,3 @@
-const HASHTAG = /^#[a-zа-яё0-9]{1,19}$/i;
-const HASHTAG_COUNT = 5;
-const COMMENT_LENGTH = 140;
-const form = document.querySelector('.img-upload__form');
-export const hashtagFieldElement = document.querySelector('.text__hashtags');
-export const commentFieldElement = document.querySelector('.text__description');
 const ValidationErrors = {
   HASHTAGS: {
     FORMAT: 'Введён невалидный хэштег.',
@@ -14,6 +8,12 @@ const ValidationErrors = {
     MAX_LENGTH: 'Длина комментария больше 140 символов.',
   },
 };
+const HASHTAG = /^#[a-zа-яё0-9]{1,19}$/i;
+const HASHTAG_COUNT = 5;
+const COMMENT_LENGTH = 140;
+const form = document.querySelector('.img-upload__form');
+export const hashtagFieldElement = document.querySelector('.text__hashtags');
+export const commentFieldElement = document.querySelector('.text__description');
 
 const normalizeHashtags = (inputHashtags) => inputHashtags.trim().split(/\s+/).map((hashtag) => hashtag.toLowerCase()).filter(Boolean);
 
